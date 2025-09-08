@@ -21,13 +21,13 @@
             padding: 0.5rem 0;
         }
 
-        .hero-section {
+        /* .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://placehold.co/1920x800/2c3e50/ffffff?text=Seguridad+Nocturna') center/cover no-repeat;
             height: 85vh;
             display: flex;
             align-items: center;
             color: white;
-        }
+        } */
 
         .status-indicator {
             padding: 1.5rem;

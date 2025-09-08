@@ -38,7 +38,7 @@
             padding-bottom: 5px !important;
         }
 
-        .hero-section {
+        /* .hero-section {
             margin-top: 5em;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('img/carros.png') center/cover no-repeat;
             height: 90vh;
@@ -48,7 +48,7 @@
             position: relative;
             overflow: hidden;
             margin-bottom: 3em;
-        }
+        } */
 
         .hero-section::before {
             content: '';
