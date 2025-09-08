@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asociación Ingruma -Calidad,seguridad y Confianza</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top px-4 px-lg-5 py-4 ">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold fs-3" href="#">
+                <i class="bi bi-moon-stars-fill me-2 text-warning"></i>Asociación Ingruma
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#como-funciona">Cómo Funciona</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#seguridad">Seguridad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">Preguntas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div id="service-status-mobile" class="d-none d-md-block me-4 px-3 py-2 rounded fw-bold"></div>
+                    <button class="btn btn-outline-light theme-toggle" id="themeToggle">
+                        <i class="bi bi-moon-stars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <h2 class="display-3 fw-bold mb-3">Llega a Casa Seguro, <span class="text-primary">Todas las Noches</span></h2>
+                    <p class="lead fs-4 mb-1">Servicio confiable de transporte nocturno con conductores verificados y vehículos de alta seguridad. Disponible de 7:00 PM a 5:30 AM, todos los días.</p>
+                    <!-- <div class="d-flex flex-wrap gap-3">
+                        <a href="#contacto" class="btn btn-light btn-lg px-4 py-3 fw-bold">
+                            <i class="bi bi-car-front me-2"></i>Solicitar Servicio
+                        </a>
+                        <a href="tel:+525512345678" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold">
+                            <i class="bi bi-telephone-fill me-2"></i>Llamar Ahora
+                        </a>
+                        <a href="https://wa.me/525512345678?text=Hola,%20necesito%20un%20servicio%20de%20transporte%20nocturno" target="_blank" class="btn btn-success btn-lg px-4 py-3 fw-bold">
+                            <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                        </a>
+                    </div> -->
+                    <div class="row  d-flex flex-wrap gap-3">
+                        <div class="col-3">
+                            <a href="#contacto" class="btn btn-light btn-lg px-4 py-3 fw-bold">
+                                <i class="bi bi-car-front me-2"></i>Solicitar Servicio
+                            </a>
+
+                        </div>
+                        <div class="col-3">
+                            <a href="tel:+525512345678" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold">
+                                <i class="bi bi-telephone-fill me-2"></i>Llamar Ahora
+                            </a>
+                        </div>
+                        <div class="col-3">
+                            <a href="https://wa.me/525512345678?text=Hola,%20necesito%20un%20servicio%20de%20transporte%20nocturno" target="_blank" class="btn btn-success btn-lg px-4 py-3 fw-bold">
+                                <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                            </a>
+
+                        </div>
+                                    <!-- Service Status Section -->
+
+                    </div>
+                    <div id="serviceStatus" class="status-indicator text-center fw-bold fs-4">
+                            <!-- Status will be updated by JavaScript -->
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="p-4 bg-white bg-opacity-10 rounded-4">
+                        <div class="text-center mb-4">
+                            <div class="display-1 text-warning">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h3 class="text-white">Nuestro Compromiso</h3>
+                        </div>
+                        <ul class="text-white fs-5">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Conductores Verificados</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Vehículos con GPS</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Seguro de Pasajeros</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>24/7 Atención</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- Service Status Section
+    <section class="container my-5">
+        <div id="serviceStatus" class="status-indicator text-center fw-bold fs-4">
+            <!-- Status will be updated by JavaScript 
+        </div>
+    </section> -->
+
+    <!-- Horario y Cobertura -->
+    <section class="container my-5">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white border-0 py-4">
+                        <div class="d-flex align-items-center">
+                            <div class="display-4 me-3">
+                                <i class="bi bi-clock"></i>
+                            </div>
+                            <div>
+                                <h3 class="mb-0">Horario de Servicio</h3>
+                                <p class="mb-0">Disponible cuando más lo necesitas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="text-center mb-4">
+                            <h2 class="display-3 text-primary fw-bold">7:00 PM - 5:30 AM</h2>
+                            <p class="lead">Todos los días, 365 días al año</p>
+                        </div>
+                        <div class="alert alert-info bg-info bg-opacity-10 border-0" role="alert">
+                            <h5 class="alert-heading"><i class="bi bi-info-circle-fill me-2"></i>Próximos Horarios</h5>
+                            <hr>
+                            <div class="d-flex justify-content-between mb-2">
+                                <strong>Próxima apertura:</strong>
+                                <span id="nextService" class="fw-bold">Cargando...</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Próximo cierre:</strong>
+                                <span id="nextClose" class="fw-bold">Cargando...</span>
+                            </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <small class="text-muted">*Los horarios pueden variar en días festivos. Consulta con nosotros.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white border-0 py-4">
+                        <div class="d-flex align-items-center">
+                            <div class="display-4 me-3">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="mb-0">Zonas de Cobertura</h3>
+                                <p class="mb-0">Servimos las principales áreas de la ciudad</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Centro Histórico
+                                    </li>
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Zona Rosa
+                                    </li>
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Polanco
+                                    </li>
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Condesa y Roma
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Santa Fe
+                                    </li>
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Coyoacán
+                                    </li>
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        San Ángel
+                                    </li>
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Del Valle
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-light bg-opacity-50 rounded-3">
+                            <h6 class="mb-2"><i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>Zonas Extendidas</h6>
+                            <p class="mb-0">¿No encuentras tu zona? ¡Pregúntanos! Podemos extender nuestro servicio por un cargo adicional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-5 bg-light bg-opacity-25">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Nuestros Servicios</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center p-4">
+                            <div class="text-primary display-4 mb-3">
+                                <i class="bi bi-person-lines-fill"></i>
+                            </div>
+                            <h4 class="card-title fw-bold mb-3">Servicio Individual</h4>
+                            <p class="card-text mb-4">Ideal para viajes solitarios o cuando buscas privacidad y comodidad.</p>
+                            <ul class="text-start mb-4">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Vehículo privado solo para ti</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Conductor profesional y discreto</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Rutas optimizadas y seguras</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Aire acondicionado y WiFi</li>
+                            </ul>
+                            <div class="text-center">
+                                <span class="badge bg-primary fs-6">Desde $150</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center p-4">
+                            <div class="text-primary display-4 mb-3">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <h4 class="card-title fw-bold mb-3">Servicio Grupal</h4>
+                            <p class="card-text mb-4">Perfecto para salir con amigos o familiares. Más económico por persona.</p>
+                            <ul class="text-start mb-4">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Vehículos amplios hasta 6 personas</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Tarifas especiales por grupo</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Paradas múltiples permitidas</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Asistencia con equipaje</li>
+                            </ul>
+                            <div class="text-center">
+                                <span class="badge bg-primary fs-6">Desde $80 por persona</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center p-4">
+                            <div class="text-primary display-4 mb-3">
+                                <i class="bi bi-stars"></i>
+                            </div>
+                            <h4 class="card-title fw-bold mb-3">Servicio Premium</h4>
+                            <p class="card-text mb-4">Experiencia de lujo con vehículos de alta gama y servicio personalizado.</p>
+                            <ul class="text-start mb-4">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Vehículos BMW, Mercedes o equivalentes</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Aguas embotelladas y snacks</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Conductor bilingüe profesional</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Recogida con cartel personalizado</li>
+                            </ul>
+                            <div class="text-center">
+                                <span class="badge bg-primary fs-6">Desde $350</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo Funciona -->
+    <section id="como-funciona" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">¿Cómo Funciona?</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card text-center p-4">
+                        <div class="bg-primary text-white rounded-circle mx-auto mb-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                            <span class="h4">1</span>
+                        </div>
+                        <div class="display-4 text-primary mb-3">
+                            <i class="bi bi-telephone"></i>
+                        </div>
+                        <h5 class="fw-bold">Solicita tu Viaje</h5>
+                        <p>Llama, envía WhatsApp o completa nuestro formulario. Te atenderemos inmediatamente.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center p-4">
+                        <div class="bg-primary text-white rounded-circle mx-auto mb-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                            <span class="h4">2</span>
+                        </div>
+                        <div class="display-4 text-primary mb-3">
+                            <i class="bi bi-chat-dots"></i>
+                        </div>
+                        <h5 class="fw-bold">Confirmación</h5>
+                        <p>Recibirás todos los detalles: conductor, vehículo, tiempo de llegada y costo estimado.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center p-4">
+                        <div class="bg-primary text-white rounded-circle mx-auto mb-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                            <span class="h4">3</span>
+                        </div>
+                        <div class="display-4 text-primary mb-3">
+                            <i class="bi bi-car-front"></i>
+                        </div>
+                        <h5 class="fw-bold">Recogida</h5>
+                        <p>El conductor te esperará en el punto acordado con el vehículo claramente identificado.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center p-4">
+                        <div class="bg-primary text-white rounded-circle mx-auto mb-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                            <span class="h4">4</span>
+                        </div>
+                        <div class="display-4 text-primary mb-3">
+                            <i class="bi bi-house-door"></i>
+                        </div>
+                        <h5 class="fw-bold">Llegada Segura</h5>
+                        <p>Disfruta del viaje cómodo y seguro hasta tu destino. ¡Llegarás sin preocupaciones!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-5 bg-light bg-opacity-25">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Lo Que Dicen Nuestros Clientes</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://placehold.co/60x60/3498db/ffffff?text=MG" class="rounded-circle me-3" alt="María G.">
+                            <div>
+                                <h6 class="mb-0 fw-bold">María González</h6>
+                                <small class="text-muted">Enfermera - Usuaria frecuente</small>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="mb-0 fst-italic">"Gracias a Carro Nocturno llego segura a casa después de mis turnos nocturnos en el hospital. Los conductores son puntuales, profesionales y me hacen sentir completamente segura. ¡Un servicio esencial para quienes trabajamos de noche!"</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://placehold.co/60x60/e74c3c/ffffff?text=CR" class="rounded-circle me-3" alt="Carlos R.">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Carlos Ramírez</h6>
+                                <small class="text-muted">Ejecutivo - Cliente desde 2022</small>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-half text-warning"></i>
+                        </div>
+                        <p class="mb-0 fst-italic">"Perfecto para mis salidas de negocios nocturnas. Nunca me han dejado esperando y los precios son justos. Lo mejor es que puedo programar con anticipación y saber exactamente cuánto costará. ¡Altamente recomendado para profesionales!"</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://placehold.co/60x60/27ae60/ffffff?text=AL" class="rounded-circle me-3" alt="Ana L.">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Ana López</h6>
+                                <small class="text-muted">Turista - Visitó en diciembre</small>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="mb-0 fst-italic">"Como turista, me sentí completamente segura usando este servicio. El conductor hablaba inglés, conocía muy bien la ciudad y hasta me dio recomendaciones de lugares para visitar. El vehículo era impecable y el servicio, impecable. ¡Gracias por hacer mi viaje memorable!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seguridad y Conductores -->
+    <section id="seguridad" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Nuestro Compromiso con tu Seguridad</h2>
+            <div class="row g-4 mb-5">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white border-0 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="display-4 me-3">
+                                    <i class="bi bi-person-badge"></i>
+                                </div>
+                                <div>
+                                    <h3 class="mb-0">Conductores Verificados</h3>
+                                    <p class="mb-0">Profesionales capacitados y confiables</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-4">
+                                <div class="bg-primary text-white rounded-circle me-3" style="width: 100px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-shield-check"></i>
+                                </div>
+                                <div>
+                                    <h5>Verificación exhaustiva</h5>
+                                    <p class="mb-0">Antecedentes penales, licencias profesionales vigentes y referencias laborales comprobadas.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-4">
+                                <div class="bg-primary text-white rounded-circle me-3" style="width: 100px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-mortarboard"></i>
+                                </div>
+                                <div>
+                                    <h5>Capacitación continua</h5>
+                                    <p class="mb-0">Cursos mensuales en servicio al cliente, primeros auxilios y manejo defensivo nocturno.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="bg-primary text-white rounded-circle me-3" style="width: 100px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-alarm"></i>
+                                </div>
+                                <div>
+                                    <h5>Pruebas aleatorias</h5>
+                                    <p class="mb-0">Detección de alcohol y drogas con pruebas sorpresa para garantizar tu seguridad.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white border-0 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="display-4 me-3">
+                                    <i class="bi bi-car-front"></i>
+                                </div>
+                                <div>
+                                    <h3 class="mb-0">Vehículos Seguros</h3>
+                                    <p class="mb-0">Tecnología y mantenimiento de primer nivel</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex mb-4">
+                                <div class="bg-primary text-white rounded-circle me-3" style="width: 100px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-gear"></i>
+                                </div>
+                                <div>
+                                    <h5>Mantenimiento riguroso</h5>
+                                    <p class="mb-0">Revisión cada 5,000 km y mantenimiento preventivo mensual sin excepciones.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-4">
+                                <div class="bg-primary text-white rounded-circle me-3" style="width: 100px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-geo-alt"></i>
+                                </div>
+                                <div>
+                                    <h5>Rastreo GPS en tiempo real</h5>
+                                    <p class="mb-0">Monitoreo constante de rutas y compartimiento de ubicación con tus contactos.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="bg-primary text-white rounded-circle me-3" style="width: 100px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-shield"></i>
+                                </div>
+                                <div>
+                                    <h5>Seguro completo</h5>
+                                    <p class="mb-0">Cobertura de hasta $5,000,000 por pasajero y asistencia médica inmediata.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white border-0 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="display-4 me-3">
+                                    <i class="bi bi-shield-exclamation"></i>
+                                </div>
+                                <div>
+                                    <h3 class="mb-0">Protocolos de Seguridad</h3>
+                                    <p class="mb-0">Tu bienestar es nuestra prioridad número uno</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="fw-bold mb-3"><i class="bi bi-people me-2"></i>Para Pasajeros</h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Comparte tu viaje en tiempo real con contactos de confianza</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Verifica la identificación y foto del conductor antes de abordar</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Siempre usa el cinturón de seguridad durante todo el trayecto</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Califica tu experiencia para ayudarnos a mejorar el servicio</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Línea directa de emergencia disponible durante todo el viaje</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="fw-bold mb-3"><i class="bi bi-virus me-2"></i>Protocolos COVID-19</h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Uso obligatorio de cubrebocas para conductores y pasajeros</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Desinfección profunda después de cada viaje</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Capacidad reducida para mantener distancia segura</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Gel antibacterial y toallitas desinfectantes disponibles</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Ventilación cruzada durante todo el trayecto</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preguntas Frecuentes -->
+    <section id="faq" class="py-5 bg-light bg-opacity-25">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Preguntas Frecuentes</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button fw-bold fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    ¿Cómo puedo pagar por el servicio?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body fs-5">
+                                    <p>Ofrecemos múltiples opciones de pago para tu comodidad:</p>
+                                    <ul>
+                                        <li><strong>Efectivo:</strong> Pago al finalizar el viaje en pesos mexicanos.</li>
+                                        <li><strong>Tarjeta:</strong> Aceptamos todas las tarjetas de crédito y débito (Visa, MasterCard, American Express).</li>
+                                        <li><strong>Transferencia:</strong> Pago por transferencia bancaria o SPEI (solicita los datos a nuestro operador).</li>
+                                        <li><strong>App Wallet:</strong> Carga saldo a tu cuenta de usuario para pagos más rápidos y acumular puntos.</li>
+                                    </ul>
+                                    <p class="mb-0"><small>Todos nuestros vehículos cuentan con terminal para tarjetas y emitimos factura electrónica si lo requieres.</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    ¿Puedo programar un viaje con anticipación?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body fs-5">
+                                    <p>¡Absolutamente! Puedes programar tu viaje con hasta 72 horas de anticipación por cualquiera de estos métodos:</p>
+                                    <ul>
+                                        <li><strong>Llamada telefónica:</strong> Habla con nuestro operador para reservar con todos los detalles.</li>
+                                        <li><strong>WhatsApp:</strong> Envíanos un mensaje con fecha, hora, origen y destino.</li>
+                                        <li><strong>Formulario web:</strong> Completa nuestro formulario de reservas en línea.</li>
+                                        <li><strong>App móvil:</strong> Descarga nuestra aplicación para reservas programadas (próximamente).</li>
+                                    </ul>
+                                    <p>Te enviaremos una confirmación por SMS y email con todos los detalles, incluyendo el nombre y foto del conductor asignado, placa del vehículo y tiempo estimado de llegada.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    ¿Qué pasa si mi vuelo se retrasa?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body fs-5">
+                                    <p>¡No te preocupes! Si nos proporcionas tu número de vuelo al reservar, monitoreamos en tiempo real el estado de tu vuelo y ajustamos automáticamente la hora de recogida sin cargos adicionales.</p>
+                                    <p>Además, nuestros conductores esperan hasta 60 minutos sin costo adicional en aeropuertos y estaciones de autobús. Si el retraso es mayor, te contactaremos para coordinar la mejor solución.</p>
+                                    <p>En caso de cancelación total del vuelo, puedes reprogramar tu servicio sin penalización si nos notificas con al menos 2 horas de anticipación.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    ¿Hay cargos adicionales por equipaje?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body fs-5">
+                                    <p>No cobramos por equipaje normal (maletas, mochilas, bolsas de mano). Nuestros vehículos están diseñados para acomodar el equipaje típico de nuestros pasajeros.</p>
+                                    <p>Solo aplicamos cargos adicionales por artículos voluminosos o especiales:</p>
+                                    <ul>
+                                        <li><strong>Bicicletas:</strong> $100 adicional (requiere reservación previa)</li>
+                                        <li><strong>Tablas de surf/snowboard:</strong> $80 adicional</li>
+                                        <li><strong>Instrumentos musicales grandes:</strong> $120 adicional</li>
+                                        <li><strong>Mascotas en transportadoras:</strong> Sin cargo adicional</li>
+                                        <li><strong>Equipaje excesivo (más de 3 piezas grandes):</strong> $50 por pieza adicional</li>
+                                    </ul>
+                                    <p>Siempre te informaremos de cualquier cargo adicional antes de confirmar tu servicio.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    ¿Puedo llevar mascotas?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body fs-5">
+                                    <p>¡Sí, amamos a las mascotas! Puedes llevar a tus amigos peludos siempre y cuando estén en transportadoras adecuadas para su tamaño y seguridad.</p>
+                                    <p>Algunas consideraciones importantes:</p>
+                                    <ul>
+                                        <li><strong>Mascotas pequeñas:</strong> Sin cargo adicional si caben en transportadora de mano.</li>
+                                        <li><strong>Mascotas medianas/grandes:</strong> Requieren vehículos SUV (cargo adicional de $80).</li>
+                                        <li><strong>Animales de servicio:</strong> Siempre bienvenidos sin cargo adicional.</li>
+                                        <li><strong>Limpiamos a fondo:</strong> Todos nuestros vehículos se desinfectan después de cada viaje con mascotas.</li>
+                                    </ul>
+                                    <p>Por favor, infórmanos al momento de solicitar el servicio para asignarte un vehículo adecuado y un conductor que esté cómodo con mascotas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa y Contacto -->
+    <section id="contacto" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Contáctanos</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white border-0 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="display-4 me-3">
+                                    <i class="bi bi-geo-alt"></i>
+                                </div>
+                                <div>
+                                    <h3 class="mb-0">Zona de Servicio</h3>
+                                    <p class="mb-0">Cobertura detallada en la Ciudad de México</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-0" style="height: 450px; background: linear-gradient(135deg, #3498db, #2c3e50); position: relative;">
+                            <div>
+                                 <iframe src="https://www.google.com/maps/embed?pb=!4v1757293063885!6m8!1m7!1sMs0MNQXepA4QRHE2b4oJAw!2m2!1d5.421628618557109!2d-75.70506555897425!3f172.99439282467065!4f-13.81597280010493!5f0.7820865974627469" width="546" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <!-- <div style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px;">
+                                <h4 class="mb-3">Mapa Interactivo de Cobertura</h4>
+                                <p class="mb-4">Zonas principales donde operamos nuestro servicio nocturno</p>
+                                <div class="d-flex flex-wrap justify-content-center gap-2">
+                                    <span class="badge bg-primary">Centro Histórico</span>
+                                    <span class="badge bg-primary">Polanco</span>
+                                    <span class="badge bg-primary">Condesa-Roma</span>
+                                    <span class="badge bg-primary">Santa Fe</span>
+                                    <span class="badge bg-primary">Coyoacán</span>
+                                    <span class="badge bg-primary">San Ángel</span>
+                                    <span class="badge bg-primary">Del Valle</span>
+                                    <span class="badge bg-primary">Narvarte</span>
+                                </div>
+                                <p class="mt-3 mb-0"><small>¿No encuentras tu colonia? ¡Pregúntanos! Podemos extender nuestro servicio.</small></p>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white border-0 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="display-4 me-3">
+                                    <i class="bi bi-chat-dots"></i>
+                                </div>
+                                <div>
+                                    <h3 class="mb-0">Formulario de Contacto</h3>
+                                    <p class="mb-0">Resuelve tus dudas o solicita información</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <form id="contactForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label fw-bold">Nombre Completo</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label fw-bold">Teléfono</label>
+                                        <input type="tel" class="form-control" id="phone" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="email" class="form-label fw-bold">Email</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="subject" class="form-label fw-bold">Asunto</label>
+                                        <select class="form-select" id="subject" required>
+                                            <option value="">Selecciona un asunto</option>
+                                            <option value="reserva">Solicitar reserva</option>
+                                            <option value="informacion">Información general</option>
+                                            <option value="queja">Queja o sugerencia</option>
+                                            <option value="otros">Otros</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label fw-bold">Mensaje</label>
+                                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-3 mb-4">
+                                    <input class="form-check-input" type="checkbox" id="terms" required>
+                                    <label class="form-check-label" for="terms">
+                                        Acepto los <a href="#" class="text-decoration-underline">Términos y Condiciones</a> y la <a href="#" class="text-decoration-underline">Política de Privacidad</a>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 py-3 fs-5 fw-bold">
+                                    <i class="bi bi-send me-2"></i>Enviar Mensaje
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white border-0 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="display-4 me-3">
+                                    <i class="bi bi-chat-dots"></i>
+                                </div>
+                                <div>
+                                    <h3 class="mb-0">Mapa Interactivo de Cobertura</h3>
+                                    <p class="mb-0">Zonas principales donde operamos nuestro servicio nocturno</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row g-5 ">
+                                <div class="d-flex flex-wrap justify-content-center gap-2">
+                                    <span class="badge bg-primary">Centro Histórico</span>
+                                    <span class="badge bg-primary">Polanco</span>
+                                    <span class="badge bg-primary">Condesa-Roma</span>
+                                    <span class="badge bg-primary">Santa Fe</span>
+                                    <span class="badge bg-primary">Coyoacán</span>
+                                    <span class="badge bg-primary">San Ángel</span>
+                                    <span class="badge bg-primary">Del Valle</span>
+                                    <span class="badge bg-primary">Narvarte</span>
+                                </div>
+                                <p class="mt-3 mb-0"><small>¿No encuentras tu destino? ¡Pregúntanos! Podemos extender nuestro servicio.</small></p>
+
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="p-4 bg-light bg-opacity-10 rounded-3">
+                        <h4 class="text-center mb-4 fw-bold"><i class="bi bi-telephone-fill me-2"></i>Información de Contacto Directo</h4>
+                        <div class="row justify-content-center g-4">
+                            <div class="col-md-4 move">
+                                <div class="d-flex align-items-center p-3 bg-white bg-opacity-10 rounded-3">
+                                    <div class="bg-danger text-white rounded-circle me-3" style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="bi bi-telephone-fill"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Llamada Directa</h6>
+                                        <a href="tel:+525512345678" class="text-decoration-none">+52 55 1234 5678</a>
+                                        <p class="mb-0"><small>24/7, todos los días</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 move">
+                                <div class="d-flex align-items-center p-3 bg-white bg-opacity-10 rounded-3">
+                                    <div class="bg-success text-white rounded-circle me-3" style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">WhatsApp</h6>
+                                        <a href="https://wa.me/525512345678?text=Hola,%20necesito%20información%20sobre%20el%20servicio%20nocturno" target="_blank" class="text-decoration-none">Enviar mensaje</a>
+                                        <p class="mb-0"><small>Respuesta en menos de 5 min</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 move">
+                                <div class="d-flex align-items-center p-3 bg-white bg-opacity-10 rounded-3">
+                                    <div class="bg-info text-white rounded-circle me-3" style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="bi bi-envelope-fill"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Email</h6>
+                                        <a href="mailto:info@carronocturno.com" class="text-decoration-none">info@carronocturno.com</a>
+                                        <p class="mb-0"><small>Respuesta en 24 horas</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Contact Button -->
+    <a href="tel:+525512345678" class="btn btn-danger mobile-contact-btn">
+        <i class="bi bi-telephone-fill"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="mb-4">
+                        <h5 class="fw-bold mb-3">
+                            <i class="bi bi-moon-stars-fill me-2"></i>Carro Nocturno
+                        </h5>
+                        <p class="opacity-75">Tu servicio de transporte nocturno de confianza, operando desde 2018 para garantizar que llegues a casa seguro, cómodo y sin preocupaciones, noche tras noche.</p>
+                        <div class="d-flex gap-3 mt-4">
+                            <a href="#" class="text-white opacity-75">
+                                <i class="bi bi-facebook fs-4"></i>
+                            </a>
+                            <a href="#" class="text-white opacity-75">
+                                <i class="bi bi-instagram fs-4"></i>
+                            </a>
+                            <a href="#" class="text-white opacity-75">
+                                <i class="bi bi-twitter fs-4"></i>
+                            </a>
+                            <a href="#" class="text-white opacity-75">
+                                <i class="bi bi-whatsapp fs-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-4">
+                        <i class="bi bi-clock me-2"></i>Horario de Operación
+                    </h5>
+                    <div class="mb-4">
+                        <p class="fw-bold fs-5">Todos los días:</p>
+                        <p class="fs-4 text-warning fw-bold">7:00 PM - 5:30 AM</p>
+                    </div>
+                    <div id="service-status-footer" class="p-3 rounded-3"></div>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-4">
+                        <i class="bi bi-geo-alt me-2"></i>Atención al Cliente
+                    </h5>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-telephone-fill me-2 text-primary fs-5"></i>
+                            <a href="tel:+525512345678" class="text-white text-decoration-none fs-5">+52 55 1234 5678</a>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-whatsapp me-2 text-success fs-5"></i>
+                            <a href="https://wa.me/525512345678" target="_blank" class="text-white text-decoration-none fs-5">WhatsApp</a>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-envelope-fill me-2 text-info fs-5"></i>
+                            <a href="mailto:info@carronocturno.com" class="text-white text-decoration-none fs-5">info@carronocturno.com</a>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-geo-alt-fill me-2 text-warning fs-5"></i>
+                            <span class="text-white fs-5">Riosucio-Caldas, COLOMBIA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-5" style="background-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 opacity-75">&copy; 2023 Carro Nocturno. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="d-flex flex-wrap justify-content-center justify-content-md-end gap-3 mt-3 mt-md-0">
+                        <a href="#" class="text-white opacity-75 text-decoration-none">Términos y Condiciones</a>
+                        <a href="#" class="text-white opacity-75 text-decoration-none">Política de Privacidad</a>
+                        <a href="#" class="text-white opacity-75 text-decoration-none">Aviso Legal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js">
+
+    </script>
+</body>
+</html>

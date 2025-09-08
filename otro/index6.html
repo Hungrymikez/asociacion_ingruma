@@ -1,0 +1,1805 @@
+```html
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carro Nocturno - Seguridad en Cada Viaje</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --primary-dark: #1a252f;
+            --secondary-color: #3498db;
+            --secondary-light: #5dade2;
+            --accent-color: #e74c3c;
+            --accent-light: #f1948a;
+            --light-bg: #f8f9fa;
+            --dark-bg: #121212;
+            --light-text: #212529;
+            --dark-text: #f8f9fa;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --card-light: #ffffff;
+            --card-dark: #1e1e1e;
+            --border-light: rgba(0, 0, 0, 0.125);
+            --border-dark: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            transition: all 0.4s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(44, 62, 80, 0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar.scrolled {
+            background-color: var(--primary-color) !important;
+            padding-top: 5px !important;
+            padding-bottom: 5px !important;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://placehold.co/1920x800/2c3e50/ffffff?text=Seguridad+Nocturna') center/cover no-repeat;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(52, 152, 219, 0.2), transparent 70%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            border: none;
+            background-color: var(--card-light);
+            color: var(--light-text);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .status-indicator {
+            padding: 20px;
+            border-radius: 15px;
+            font-weight: 700;
+            text-align: center;
+            margin: 30px 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.2rem;
+        }
+
+        .status-indicator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .status-indicator:hover::before {
+            left: 100%;
+        }
+
+        .available {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border: none;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+        }
+
+        .unavailable {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .testimonial-card {
+            border-left: 5px solid var(--secondary-color);
+            padding: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            background: var(--card-light);
+            position: relative;
+            color: var(--light-text);
+        }
+
+        .testimonial-card::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 5rem;
+            color: rgba(52, 152, 219, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .faq-item {
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background-color: var(--card-light);
+            color: var(--light-text);
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: var(--secondary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .map-container {
+            height: 450px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://placehold.co/800x600/3498db/ffffff?text=Mapa+de+Cobertura') center/cover no-repeat;
+            opacity: 0.7;
+        }
+
+        .map-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.3rem;
+            margin-left: 15px;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(180deg);
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 60px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color), var(--secondary-color));
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 12px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .bg-secondary {
+            background-color: var(--secondary-color) !important;
+        }
+
+        .text-secondary {
+            color: var(--secondary-color) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 62, 80, 0.4);
+        }
+
+        .btn-danger {
+            background-color: var(--accent-color) !important;
+            border-color: var(--accent-color) !important;
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn-outline-light:hover {
+            background-color: white !important;
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            color: var(--light-text);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .how-it-works-step {
+            position: relative;
+            padding: 30px;
+            border-radius: 15px;
+            background: var(--card-light);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            margin: 10px;
+            height: 100%;
+            color: var(--light-text);
+        }
+
+        .how-it-works-step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .security-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .security-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Dark mode styles - ENHANCED */
+        body[data-bs-theme="dark"] {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        body[data-bs-theme="dark"] .navbar {
+            background-color: rgba(30, 30, 30, 0.95) !important;
+        }
+
+        body[data-bs-theme="dark"] .navbar.scrolled {
+            background-color: #1a1a1a !important;
+        }
+
+        /* Improved card styling for dark mode */
+        body[data-bs-theme="dark"] .card,
+        body[data-bs-theme="dark"] .service-card,
+        body[data-bs-theme="dark"] .how-it-works-step {
+            background-color: var(--card-dark) !important;
+            color: var(--dark-text) !important;
+            border-color: var(--border-dark) !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        body[data-bs-theme="dark"] .card:hover,
+        body[data-bs-theme="dark"] .service-card:hover,
+        body[data-bs-theme="dark"] .how-it-works-step:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5) !important;
+            background-color: #252525 !important;
+        }
+
+        body[data-bs-theme="dark"] .form-control {
+            background-color: #2a2a2a !important;
+            color: var(--dark-text) !important;
+            border-color: #444 !important;
+        }
+
+        body[data-bs-theme="dark"] .form-control:focus {
+            background-color: #2a2a2a !important;
+            color: var(--dark-text) !important;
+            border-color: var(--secondary-color) !important;
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25) !important;
+        }
+
+        body[data-bs-theme="dark"] .map-container {
+            background: linear-gradient(135deg, #1a3a5a, #1a1a1a);
+        }
+
+        body[data-bs-theme="dark"] .map-overlay {
+            opacity: 0.5;
+        }
+
+        body[data-bs-theme="dark"] .faq-item {
+            background-color: var(--card-dark) !important;
+            border-color: var(--border-dark) !important;
+            color: var(--dark-text) !important;
+        }
+
+        body[data-bs-theme="dark"] .faq-item:hover {
+            background-color: #252525 !important;
+        }
+
+        body[data-bs-theme="dark"] .testimonial-card {
+            background-color: var(--card-dark) !important;
+            color: var(--dark-text) !important;
+            border-color: var(--secondary-color) !important;
+        }
+
+        body[data-bs-theme="dark"] .testimonial-card:hover {
+            background-color: #252525 !important;
+        }
+
+        body[data-bs-theme="dark"] .accordion-button {
+            background-color: var(--card-dark) !important;
+            color: var(--dark-text) !important;
+        }
+
+        body[data-bs-theme="dark"] .accordion-button:not(.collapsed) {
+            background-color: #1a3a5a !important;
+            color: white !important;
+        }
+
+        body[data-bs-theme="dark"] .contact-info {
+            background: rgba(30, 30, 30, 0.8) !important;
+            border-color: rgba(255, 255, 255, 0.05) !important;
+        }
+
+        body[data-bs-theme="dark"] .contact-method {
+            background: rgba(255, 255, 255, 0.03) !important;
+        }
+
+        body[data-bs-theme="dark"] .contact-method:hover {
+            background: rgba(255, 255, 255, 0.08) !important;
+        }
+
+        body[data-bs-theme="dark"] .section-title {
+            color: var(--dark-text) !important;
+        }
+
+        body[data-bs-theme="dark"] .section-title::after {
+            background: linear-gradient(90deg, var(--secondary-light), var(--accent-light)) !important;
+        }
+
+        body[data-bs-theme="dark"] .list-group-item {
+            background-color: var(--card-dark) !important;
+            color: var(--dark-text) !important;
+            border-color: var(--border-dark) !important;
+        }
+
+        body[data-bs-theme="dark"] .alert {
+            background-color: rgba(30, 30, 30, 0.8) !important;
+            color: var(--dark-text) !important;
+            border-color: var(--border-dark) !important;
+        }
+
+        body[data-bs-theme="dark"] .badge {
+            background-color: rgba(52, 152, 219, 0.8) !important;
+            color: white !important;
+        }
+
+        /* Mobile floating button */
+        .mobile-contact-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+            font-size: 1.8rem;
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .mobile-contact-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 8px 30px rgba(231, 76, 60, 0.8);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6); }
+            50% { box-shadow: 0 8px 25px rgba(231, 76, 60, 0.9); }
+            100% { box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero-section {
+                height: 70vh;
+            }
+            
+            .how-it-works-step {
+                padding: 20px;
+            }
+            
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                top: -15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 60vh;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .section-title::after {
+                width: 60px;
+            }
+            
+            .mobile-contact-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                height: 50vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .status-indicator {
+                font-size: 1rem;
+                padding: 15px;
+            }
+            
+            .mobile-contact-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Animation for service cards */
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 5px;
+        }
+
+        body[data-bs-theme="dark"] ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        body[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
+            background: var(--secondary-light);
+        }
+
+        /* Hover opacity effect */
+        .hover-opacity-100 {
+            transition: opacity 0.3s ease;
+        }
+
+        .hover-opacity-100:hover {
+            opacity: 1 !important;
+        }
+
+        body[data-bs-theme="dark"] .hover-opacity-100:hover {
+            opacity: 0.9 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top px-4 px-lg-5 py-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="#">
+                <i class="bi bi-moon-stars-fill me-2"></i>Carro Nocturno
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#como-funciona">Cómo Funciona</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#seguridad">Seguridad</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">Preguntas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div id="service-status-mobile" class="d-none d-md-block me-4 px-3 py-2 rounded fw-bold"></div>
+                    <button class="btn btn-outline-light theme-toggle" id="themeToggle">
+                        <i class="bi bi-moon-stars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-5 mb-lg-0">
+                    <h1 class="display-3 fw-bold mb-4">Llega a Casa Seguro, <span class="text-primary">Todas las Noches</span></h1>
+                    <p class="lead fs-4 mb-5">Servicio confiable de transporte nocturno con conductores verificados y vehículos de alta seguridad. Disponible de 7:00 PM a 5:30 AM, todos los días.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#contacto" class="btn btn-light btn-lg px-4 py-3 fw-bold">
+                            <i class="bi bi-car-front me-2"></i>Solicitar Servicio
+                        </a>
+                        <a href="tel:+525512345678" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold">
+                            <i class="bi bi-telephone-fill me-2"></i>Llamar Ahora
+                        </a>
+                        <a href="https://wa.me/525512345678?text=Hola,%20necesito%20un%20servicio%20de%20transporte%20nocturno" target="_blank" class="btn btn-success btn-lg px-4 py-3 fw-bold">
+                            <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="p-4 bg-white bg-opacity-10 rounded-4">
+                        <div class="text-center mb-4">
+                            <div class="display-1 text-warning">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h3 class="text-white">Nuestro Compromiso</h3>
+                        </div>
+                        <ul class="text-white fs-5">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Conductores Verificados</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Vehículos con GPS</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Seguro de Pasajeros</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>24/7 Atención</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Status Section -->
+    <section class="container my-5">
+        <div id="serviceStatus" class="status-indicator text-center fw-bold fs-4">
+            <!-- Status will be updated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Horario y Cobertura -->
+    <section class="container my-5">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-lg">
+                    <div class="card-header bg-primary text-white border-0 py-4">
+                        <div class="d-flex align-items-center">
+                            <div class="display-4 me-3">
+                                <i class="bi bi-clock"></i>
+                            </div>
+                            <div>
+                                <h3 class="mb-0">Horario de Servicio</h3>
+                                <p class="mb-0">Disponible cuando más lo necesitas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="text-center mb-4">
+                            <h2 class="display-3 text-primary fw-bold">7:00 PM - 5:30 AM</h2>
+                            <p class="lead">Todos los días, 365 días al año</p>
+                        </div>
+                        <div class="alert alert-info bg-info bg-opacity-10 border-0" role="alert">
+                            <h5 class="alert-heading"><i class="bi bi-info-circle-fill me-2"></i>Próximos Horarios</h5>
+                            <hr>
+                            <div class="d-flex justify-content-between mb-2">
+                                <strong>Próxima apertura:</strong>
+                                <span id="nextService" class="fw-bold">Cargando...</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Próximo cierre:</strong>
+                                <span id="nextClose" class="fw-bold">Cargando...</span>
+                            </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <small class="text-muted">*Los horarios pueden variar en días festivos. Consulta con nosotros.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-lg">
+                    <div class="card-header bg-primary text-white border-0 py-4">
+                        <div class="d-flex align-items-center">
+                            <div class="display-4 me-3">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="mb-0">Zonas de Cobertura</h3>
+                                <p class="mb-0">Servimos las principales áreas de la ciudad</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Centro Histórico
+                                    </li>
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Zona Rosa
+                                    </li>
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Polanco
+                                    </li>
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Condesa y Roma
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Santa Fe
+                                    </li>
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Coyoacán
+                                    </li>
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        San Ángel
+                                    </li>
+                                    <li class="list-group-item border-0 bg-transparent d-flex align-items-center">
+                                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                        Del Valle
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-light bg-opacity-50 rounded-3">
+                            <h6 class="mb-2"><i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>Zonas Extendidas</h6>
+                            <p class="mb-0">¿No encuentras tu zona? ¡Pregúntanos! Podemos extender nuestro servicio por un cargo adicional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-5 bg-light bg-opacity-50">
+        <div class="container">
+            <h2 class="text-center section-title">Nuestros Servicios</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card service-card animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon text-primary">
+                                <i class="bi bi-person-lines-fill"></i>
+                            </div>
+                            <h4 class="card-title fw-bold mb-3">Servicio Individual</h4>
+                            <p class="card-text mb-4">Ideal para viajes solitarios o cuando buscas privacidad y comodidad.</p>
+                            <ul class="text-start mb-4">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Vehículo privado solo para ti</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Conductor profesional y discreto</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Rutas optimizadas y seguras</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Aire acondicionado y WiFi</li>
+                            </ul>
+                            <div class="text-center">
+                                <span class="badge bg-primary fs-6">Desde $150</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon text-primary">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <h4 class="card-title fw-bold mb-3">Servicio Grupal</h4>
+                            <p class="card-text mb-4">Perfecto para salir con amigos o familiares. Más económico por persona.</p>
+                            <ul class="text-start mb-4">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Vehículos amplios hasta 6 personas</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Tarifas especiales por grupo</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Paradas múltiples permitidas</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Asistencia con equipaje</li>
+                            </ul>
+                            <div class="text-center">
+                                <span class="badge bg-primary fs-6">Desde $80 por persona</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card animate-on-scroll">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon text-primary">
+                                <i class="bi bi-stars"></i>
+                            </div>
+                            <h4 class="card-title fw-bold mb-3">Servicio Premium</h4>
+                            <p class="card-text mb-4">Experiencia de lujo con vehículos de alta gama y servicio personalizado.</p>
+                            <ul class="text-start mb-4">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Vehículos BMW, Mercedes o equivalentes</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Aguas embotelladas y snacks</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Conductor bilingüe profesional</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Recogida con cartel personalizado</li>
+                            </ul>
+                            <div class="text-center">
+                                <span class="badge bg-primary fs-6">Desde $350</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo Funciona -->
+    <section id="como-funciona" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">¿Cómo Funciona?</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="how-it-works-step">
+                        <div class="step-number">1</div>
+                        <div class="text-center">
+                            <div class="display-4 text-primary mb-3">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <h5 class="fw-bold">Solicita tu Viaje</h5>
+                            <p>Llama, envía WhatsApp o completa nuestro formulario. Te atenderemos inmediatamente.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="how-it-works-step">
+                        <div class="step-number">2</div>
+                        <div class="text-center">
+                            <div class="display-4 text-primary mb-3">
+                                <i class="bi bi-chat-dots"></i>
+                            </div>
+                            <h5 class="fw-bold">Confirmación</h5>
+                            <p>Recibirás todos los detalles: conductor, vehículo, tiempo de llegada y costo estimado.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="how-it-works-step">
+                        <div class="step-number">3</div>
+                        <div class="text-center">
+                            <div class="display-4 text-primary mb-3">
+                                <i class="bi bi-car-front"></i>
+                            </div>
+                            <h5 class="fw-bold">Recogida</h5>
+                            <p>El conductor te esperará en el punto acordado con el vehículo claramente identificado.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="how-it-works-step">
+                        <div class="step-number">4</div>
+                        <div class="text-center">
+                            <div class="display-4 text-primary mb-3">
+                                <i class="bi bi-house-door"></i>
+                            </div>
+                            <h5 class="fw-bold">Llegada Segura</h5>
+                            <p>Disfruta del viaje cómodo y seguro hasta tu destino. ¡Llegarás sin preocupaciones!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-5 bg-light bg-opacity-50">
+        <div class="container">
+            <h2 class="text-center section-title">Lo Que Dicen Nuestros Clientes</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card animate-on-scroll">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://placehold.co/60x60/3498db/ffffff?text=MG" class="rounded-circle me-3" alt="María G.">
+                            <div>
+                                <h6 class="mb-0 fw-bold">María González</h6>
+                                <small class="text-muted">Enfermera - Usuaria frecuente</small>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="mb-0 fst-italic">"Gracias a Carro Nocturno llego segura a casa después de mis turnos nocturnos en el hospital. Los conductores son puntuales, profesionales y me hacen sentir completamente segura. ¡Un servicio esencial para quienes trabajamos de noche!"</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card animate-on-scroll">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://placehold.co/60x60/e74c3c/ffffff?text=CR" class="rounded-circle me-3" alt="Carlos R.">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Carlos Ramírez</h6>
+                                <small class="text-muted">Ejecutivo - Cliente desde 2022</small>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-half text-warning"></i>
+                        </div>
+                        <p class="mb-0 fst-italic">"Perfecto para mis salidas de negocios nocturnas. Nunca me han dejado esperando y los precios son justos. Lo mejor es que puedo programar con anticipación y saber exactamente cuánto costará. ¡Altamente recomendado para profesionales!"</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card animate-on-scroll">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://placehold.co/60x60/27ae60/ffffff?text=AL" class="rounded-circle me-3" alt="Ana L.">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Ana López</h6>
+                                <small class="text-muted">Turista - Visitó en diciembre</small>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="mb-0 fst-italic">"Como turista, me sentí completamente segura usando este servicio. El conductor hablaba inglés, conocía muy bien la ciudad y hasta me dio recomendaciones de lugares para visitar. El vehículo era impecable y el servicio, impecable. ¡Gracias por hacer mi viaje memorable!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seguridad y Conductores -->
+    <section id="seguridad" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Nuestro Compromiso con tu Seguridad</h2>
+            <div class="row g-4 mb-5">
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-lg">
+                        <div class="card-header bg-primary text-white border-0 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="display-4 me-3">
+                                    <i class="bi bi-person-badge"></i>
+                                </div>
+                                <div>
+                                    <h3 class="mb-0">Conductores Verificados</h3>
+                                    <p class="mb-0">Profesionales capacitados y confiables</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="security-feature">
+                                <div class="security-icon">
+                                    <i class="bi bi-shield-check"></i>
+                                </div>
+                                <div>
+                                    <h5>Verificación exhaustiva</h5>
+                                    <p>Antecedentes penales, licencias profesionales vigentes y referencias laborales comprobadas.</p>
+                                </div>
+                            </div>
+                            <div class="security-feature">
+                                <div class="security-icon">
+                                    <i class="bi bi-mortarboard"></i>
+                                </div>
+                                <div>
+                                    <h5>Capacitación continua</h5>
+                                    <p>Cursos mensuales en servicio al cliente, primeros auxilios y manejo defensivo nocturno.</p>
+                                </div>
+                            </div>
+                            <div class="security-feature">
+                                <div class="security-icon">
+                                    <i class="bi bi-alarm"></i>
+                                </div>
+                                <div>
+                                    <h5>Pruebas aleatorias</h5>
+                                    <p>Detección de alcohol y drogas con pruebas sorpresa para garantizar tu seguridad.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-lg">
+                        <div class="card-header bg-primary text-white border-0 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="display-4 me-3">
+                                    <i class="bi bi-car-front"></i>
+                                </div>
+                                <div>
+                                    <h3 class="mb-0">Vehículos Seguros</h3>
+                                    <p class="mb-0">Tecnología y mantenimiento de primer nivel</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="security-feature">
+                                <div class="security-icon">
+                                    <i class="bi bi-gear"></i>
+                                </div>
+                                <div>
+                                    <h5>Mantenimiento riguroso</h5>
+                                    <p>Revisión cada 5,000 km y mantenimiento preventivo mensual sin excepciones.</p>
+                                </div>
+                            </div>
+                            <div class="security-feature">
+                                <div class="security-icon">
+                                    <i class="bi bi-geo-alt"></i>
+                                </div>
+                                <div>
+                                    <h5>Rastreo GPS en tiempo real</h5>
+                                    <p>Monitoreo constante de rutas y compartimiento de ubicación con tus contactos.</p>
+                                </div>
+                            </div>
+                            <div class="security-feature">
+                                <div class="security-icon">
+                                    <i class="bi bi-shield"></i>
+                                </div>
+                                <div>
+                                    <h5>Seguro completo</h5>
+                                    <p>Cobertura de hasta $5,000,000 por pasajero y asistencia médica inmediata.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-header bg-primary text-white border-0 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="display-4 me-3">
+                                    <i class="bi bi-shield-exclamation"></i>
+                                </div>
+                                <div>
+                                    <h3 class="mb-0">Protocolos de Seguridad</h3>
+                                    <p class="mb-0">Tu bienestar es nuestra prioridad número uno</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="fw-bold mb-3"><i class="bi bi-people me-2"></i>Para Pasajeros</h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Comparte tu viaje en tiempo real con contactos de confianza</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Verifica la identificación y foto del conductor antes de abordar</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Siempre usa el cinturón de seguridad durante todo el trayecto</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Califica tu experiencia para ayudarnos a mejorar el servicio</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Línea directa de emergencia disponible durante todo el viaje</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="fw-bold mb-3"><i class="bi bi-virus me-2"></i>Protocolos COVID-19</h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Uso obligatorio de cubrebocas para conductores y pasajeros</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Desinfección profunda después de cada viaje</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Capacidad reducida para mantener distancia segura</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Gel antibacterial y toallitas desinfectantes disponibles</li>
+                                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Ventilación cruzada durante todo el trayecto</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preguntas Frecuentes -->
+    <section id="faq" class="py-5 bg-light bg-opacity-50">
+        <div class="container">
+            <h2 class="text-center section-title">Preguntas Frecuentes</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="faq-item">
+                            <div class="accordion-header">
+                                <button class="accordion-button fw-bold fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    ¿Cómo puedo pagar por el servicio?
+                                </button>
+                            </div>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body fs-5">
+                                    <p>Ofrecemos múltiples opciones de pago para tu comodidad:</p>
+                                    <ul>
+                                        <li><strong>Efectivo:</strong> Pago al finalizar el viaje en pesos mexicanos.</li>
+                                        <li><strong>Tarjeta:</strong> Aceptamos todas las tarjetas de crédito y débito (Visa, MasterCard, American Express).</li>
+                                        <li><strong>Transferencia:</strong> Pago por transferencia bancaria o SPEI (solicita los datos a nuestro operador).</li>
+                                        <li><strong>App Wallet:</strong> Carga saldo a tu cuenta de usuario para pagos más rápidos y acumular puntos.</li>
+                                    </ul>
+                                    <p class="mb-0"><small>Todos nuestros vehículos cuentan con terminal para tarjetas y emitimos factura electrónica si lo requieres.</small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    ¿Puedo programar un viaje con anticipación?
+                                </button>
+                            </div>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body fs-5">
+                                    <p>¡Absolutamente! Puedes programar tu viaje con hasta 72 horas de anticipación por cualquiera de estos métodos:</p>
+                                    <ul>
+                                        <li><strong>Llamada telefónica:</strong> Habla con nuestro operador para reservar con todos los detalles.</li>
+                                        <li><strong>WhatsApp:</strong> Envíanos un mensaje con fecha, hora, origen y destino.</li>
+                                        <li><strong>Formulario web:</strong> Completa nuestro formulario de reservas en línea.</li>
+                                        <li><strong>App móvil:</strong> Descarga nuestra aplicación para reservas programadas (próximamente).</li>
+                                    </ul>
+                                    <p>Te enviaremos una confirmación por SMS y email con todos los detalles, incluyendo el nombre y foto del conductor asignado, placa del vehículo y tiempo estimado de llegada.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    ¿Qué pasa si mi vuelo se retrasa?
+                                </button>
+                            </div>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body fs-5">
+                                    <p>¡No te preocupes! Si nos proporcionas tu número de vuelo al reservar, monitoreamos en tiempo real el estado de tu vuelo y ajustamos automáticamente la hora de recogida sin cargos adicionales.</p>
+                                    <p>Además, nuestros conductores esperan hasta 60 minutos sin costo adicional en aeropuertos y estaciones de autobús. Si el retraso es mayor, te contactaremos para coordinar la mejor solución.</p>
+                                    <p>En caso de cancelación total del vuelo, puedes reprogramar tu servicio sin penalización si nos notificas con al menos 2 horas de anticipación.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    ¿Hay cargos adicionales por equipaje?
+                                </button>
+                            </div>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body fs-5">
+                                    <p>No cobramos por equipaje normal (maletas, mochilas, bolsas de mano). Nuestros vehículos están diseñados para acomodar el equipaje típico de nuestros pasajeros.</p>
+                                    <p>Solo aplicamos cargos adicionales por artículos voluminosos o especiales:</p>
+                                    <ul>
+                                        <li><strong>Bicicletas:</strong> $100 adicional (requiere reservación previa)</li>
+                                        <li><strong>Tablas de surf/snowboard:</strong> $80 adicional</li>
+                                        <li><strong>Instrumentos musicales grandes:</strong> $120 adicional</li>
+                                        <li><strong>Mascotas en transportadoras:</strong> Sin cargo adicional</li>
+                                        <li><strong>Equipaje excesivo (más de 3 piezas grandes):</strong> $50 por pieza adicional</li>
+                                    </ul>
+                                    <p>Siempre te informaremos de cualquier cargo adicional antes de confirmar tu servicio.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    ¿Puedo llevar mascotas?
+                                </button>
+                            </div>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body fs-5">
+                                    <p>¡Sí, amamos a las mascotas! Puedes llevar a tus amigos peludos siempre y cuando estén en transportadoras adecuadas para su tamaño y seguridad.</p>
+                                    <p>Algunas consideraciones importantes:</p>
+                                    <ul>
+                                        <li><strong>Mascotas pequeñas:</strong> Sin cargo adicional si caben en transportadora de mano.</li>
+                                        <li><strong>Mascotas medianas/grandes:</strong> Requieren vehículos SUV (cargo adicional de $80).</li>
+                                        <li><strong>Animales de servicio:</strong> Siempre bienvenidos sin cargo adicional.</li>
+                                        <li><strong>Limpiamos a fondo:</strong> Todos nuestros vehículos se desinfectan después de cada viaje con mascotas.</li>
+                                    </ul>
+                                    <p>Por favor, infórmanos al momento de solicitar el servicio para asignarte un vehículo adecuado y un conductor que esté cómodo con mascotas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa y Contacto -->
+    <section id="contacto" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Contáctanos</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow-lg">
+                        <div class="card-header bg-primary text-white border-0 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="display-4 me-3">
+                                    <i class="bi bi-geo-alt"></i>
+                                </div>
+                                <div>
+                                    <h3 class="mb-0">Zona de Servicio</h3>
+                                    <p class="mb-0">Cobertura detallada en la Ciudad de México</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="map-container">
+                                <div class="map-overlay"></div>
+                                <div class="map-content">
+                                    <h4 class="mb-3">Mapa Interactivo de Cobertura</h4>
+                                    <p class="mb-4">Zonas principales donde operamos nuestro servicio nocturno</p>
+                                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                                        <span class="badge bg-primary fs-6">Centro Histórico</span>
+                                        <span class="badge bg-primary fs-6">Polanco</span>
+                                        <span class="badge bg-primary fs-6">Condesa-Roma</span>
+                                        <span class="badge bg-primary fs-6">Santa Fe</span>
+                                        <span class="badge bg-primary fs-6">Coyoacán</span>
+                                        <span class="badge bg-primary fs-6">San Ángel</span>
+                                        <span class="badge bg-primary fs-6">Del Valle</span>
+                                        <span class="badge bg-primary fs-6">Narvarte</span>
+                                    </div>
+                                    <p class="mt-3 mb-0"><small>¿No encuentras tu colonia? ¡Pregúntanos! Podemos extender nuestro servicio.</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow-lg">
+                        <div class="card-header bg-primary text-white border-0 py-4">
+                            <div class="d-flex align-items-center">
+                                <div class="display-4 me-3">
+                                    <i class="bi bi-chat-dots"></i>
+                                </div>
+                                <div>
+                                    <h3 class="mb-0">Formulario de Contacto</h3>
+                                    <p class="mb-0">Resuelve tus dudas o solicita información</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <form id="contactForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label fw-bold">Nombre Completo</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label fw-bold">Teléfono</label>
+                                        <input type="tel" class="form-control" id="phone" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="email" class="form-label fw-bold">Email</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="subject" class="form-label fw-bold">Asunto</label>
+                                        <select class="form-select" id="subject" required>
+                                            <option value="">Selecciona un asunto</option>
+                                            <option value="reserva">Solicitar reserva</option>
+                                            <option value="informacion">Información general</option>
+                                            <option value="queja">Queja o sugerencia</option>
+                                            <option value="otros">Otros</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label fw-bold">Mensaje</label>
+                                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-3 mb-4">
+                                    <input class="form-check-input" type="checkbox" id="terms" required>
+                                    <label class="form-check-label" for="terms">
+                                        Acepto los <a href="#" class="text-decoration-underline">Términos y Condiciones</a> y la <a href="#" class="text-decoration-underline">Política de Privacidad</a>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 py-3 fs-5 fw-bold">
+                                    <i class="bi bi-send me-2"></i>Enviar Mensaje
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="contact-info p-4">
+                        <h4 class="text-center mb-4 fw-bold"><i class="bi bi-telephone-fill me-2"></i>Información de Contacto Directo</h4>
+                        <div class="row justify-content-center g-4">
+                            <div class="col-md-4">
+                                <div class="contact-method">
+                                    <div class="contact-icon bg-danger">
+                                        <i class="bi bi-telephone-fill"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Llamada Directa</h6>
+                                        <a href="tel:+525512345678" class="text-decoration-none text-dark">+52 55 1234 5678</a>
+                                        <p class="mb-0"><small>24/7, todos los días</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="contact-method">
+                                    <div class="contact-icon bg-success">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">WhatsApp</h6>
+                                        <a href="https://wa.me/525512345678?text=Hola,%20necesito%20información%20sobre%20el%20servicio%20nocturno" target="_blank" class="text-decoration-none text-dark">Enviar mensaje</a>
+                                        <p class="mb-0"><small>Respuesta en menos de 5 min</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="contact-method">
+                                    <div class="contact-icon bg-info">
+                                        <i class="bi bi-envelope-fill"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Email</h6>
+                                        <a href="mailto:info@carronocturno.com" class="text-decoration-none text-dark">info@carronocturno.com</a>
+                                        <p class="mb-0"><small>Respuesta en 24 horas</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Contact Button -->
+    <a href="tel:+525512345678" class="btn btn-danger mobile-contact-btn">
+        <i class="bi bi-telephone-fill"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="mb-4">
+                        <h5 class="fw-bold mb-3">
+                            <i class="bi bi-moon-stars-fill me-2"></i>Carro Nocturno
+                        </h5>
+                        <p class="opacity-75">Tu servicio de transporte nocturno de confianza, operando desde 2018 para garantizar que llegues a casa seguro, cómodo y sin preocupaciones, noche tras noche.</p>
+                        <div class="d-flex gap-3 mt-4">
+                            <a href="#" class="text-white opacity-75 hover-opacity-100">
+                                <i class="bi bi-facebook fs-4"></i>
+                            </a>
+                            <a href="#" class="text-white opacity-75 hover-opacity-100">
+                                <i class="bi bi-instagram fs-4"></i>
+                            </a>
+                            <a href="#" class="text-white opacity-75 hover-opacity-100">
+                                <i class="bi bi-twitter fs-4"></i>
+                            </a>
+                            <a href="#" class="text-white opacity-75 hover-opacity-100">
+                                <i class="bi bi-whatsapp fs-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-4">
+                        <i class="bi bi-clock me-2"></i>Horario de Operación
+                    </h5>
+                    <div class="mb-4">
+                        <p class="fw-bold fs-5">Todos los días:</p>
+                        <p class="fs-4 text-warning fw-bold">7:00 PM - 5:30 AM</p>
+                    </div>
+                    <div id="service-status-footer" class="p-3 rounded-3"></div>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-4">
+                        <i class="bi bi-geo-alt me-2"></i>Atención al Cliente
+                    </h5>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-telephone-fill me-2 text-primary fs-5"></i>
+                            <a href="tel:+525512345678" class="text-white text-decoration-none fs-5">+52 55 1234 5678</a>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-whatsapp me-2 text-success fs-5"></i>
+                            <a href="https://wa.me/525512345678" target="_blank" class="text-white text-decoration-none fs-5">WhatsApp</a>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-envelope-fill me-2 text-info fs-5"></i>
+                            <a href="mailto:info@carronocturno.com" class="text-white text-decoration-none fs-5">info@carronocturno.com</a>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-geo-alt-fill me-2 text-warning fs-5"></i>
+                            <span class="text-white fs-5">Ciudad de México, CDMX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-5" style="background-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 opacity-75">&copy; 2023 Carro Nocturno. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="d-flex flex-wrap justify-content-center justify-content-md-end gap-3 mt-3 mt-md-0">
+                        <a href="#" class="text-white opacity-75 hover-opacity-100 text-decoration-none">Términos y Condiciones</a>
+                        <a href="#" class="text-white opacity-75 hover-opacity-100 text-decoration-none">Política de Privacidad</a>
+                        <a href="#" class="text-white opacity-75 hover-opacity-100 text-decoration-none">Aviso Legal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Theme Toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // Check for saved theme preference or use system preference
+            const savedTheme = localStorage.getItem('theme') || 
+                (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            
+            document.documentElement.setAttribute('data-bs-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+            
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                
+                document.documentElement.setAttribute('data-bs-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+                
+                // Add animation effect
+                themeToggle.style.transform = 'rotate(360deg)';
+                setTimeout(() => {
+                    themeToggle.style.transform = 'rotate(0deg)';
+                }, 500);
+            });
+            
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    themeIcon.classList.remove('bi-moon-stars');
+                    themeIcon.classList.add('bi-sun');
+                } else {
+                    themeIcon.classList.remove('bi-sun');
+                    themeIcon.classList.add('bi-moon-stars');
+                }
+            }
+            
+            // Service Status
+            function updateServiceStatus() {
+                const now = new Date();
+                const currentHour = now.getHours();
+                const currentMinute = now.getMinutes();
+                
+                // Service hours: 7:00 PM (19:00) to 5:30 AM (5:30)
+                const isServiceAvailable = (currentHour >= 19 || currentHour < 5) || (currentHour === 5 && currentMinute < 30);
+                
+                const statusElement = document.getElementById('serviceStatus');
+                const statusMobile = document.getElementById('service-status-mobile');
+                const statusFooter = document.getElementById('service-status-footer');
+                
+                if (isServiceAvailable) {
+                    statusElement.className = 'status-indicator available';
+                    statusElement.innerHTML = '<i class="bi bi-check-circle-fill me-3"></i>¡SERVICIO DISPONIBLE AHORA! - Nuestros conductores están listos para llevarte a casa seguro (7:00 PM - 5:30 AM)';
+                    
+                    if (statusMobile) {
+                        statusMobile.className = 'text-success bg-success bg-opacity-10 px-3 py-2 rounded fw-bold';
+                        statusMobile.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> Disponible';
+                    }
+                    
+                    if (statusFooter) {
+                        statusFooter.innerHTML = '<div class="text-success fw-bold"><i class="bi bi-check-circle-fill me-2"></i>Servicio disponible ahora</div><div class="mt-2">¡Llama o envía WhatsApp para solicitar tu viaje!</div>';
+                    }
+                    
+                    // Calculate next closing time
+                    let nextClose = new Date();
+                    if (currentHour < 5 || (currentHour === 5 && currentMinute < 30)) {
+                        // If before 5:30 AM, closing is today at 5:30 AM
+                        nextClose.setHours(5, 30, 0, 0);
+                    } else {
+                        // Otherwise, closing is tomorrow at 5:30 AM
+                        nextClose.setDate(nextClose.getDate() + 1);
+                        nextClose.setHours(5, 30, 0, 0);
+                    }
+                    
+                    document.getElementById('nextClose').textContent = formatTime(nextClose);
+                    document.getElementById('nextService').textContent = "Servicio disponible ahora";
+                } else {
+                    statusElement.className = 'status-indicator unavailable';
+                    statusElement.innerHTML = '<i class="bi bi-x-circle-fill me-3"></i>SERVICIO NO DISPONIBLE - Nuestro horario es de 7:00 PM a 5:30 AM. ¡Vuelve pronto!';
+                    
+                    if (statusMobile) {
+                        statusMobile.className = 'text-danger bg-danger bg-opacity-10 px-3 py-2 rounded fw-bold';
+                        statusMobile.innerHTML = '<i class="bi bi-x-circle-fill me-1"></i> No disponible';
+                    }
+                    
+                    if (statusFooter) {
+                        statusFooter.innerHTML = '<div class="text-danger fw-bold"><i class="bi bi-x-circle-fill me-2"></i>Servicio no disponible</div><div class="mt-2">Horario: 7:00 PM - 5:30 AM</div>';
+                    }
+                    
+                    // Calculate next opening time (today at 7:00 PM if before 7 PM, otherwise tomorrow at 7:00 PM)
+                    let nextOpen = new Date();
+                    if (currentHour < 19) {
+                        nextOpen.setHours(19, 0, 0, 0);
+                    } else {
+                        nextOpen.setDate(nextOpen.getDate() + 1);
+                        nextOpen.setHours(19, 0, 0, 0);
+                    }
+                    
+                    document.getElementById('nextService').textContent = formatTime(nextOpen);
+                    
+                    // Next closing will be after next opening
+                    let nextClose = new Date(nextOpen);
+                    nextClose.setDate(nextClose.getDate() + 1);
+                    nextClose.setHours(5, 30, 0, 0);
+                    document.getElementById('nextClose').textContent = formatTime(nextClose);
+                }
+            }
+            
+            function formatTime(date) {
+                const hours = date.getHours();
+                const minutes = date.getMinutes();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                const formattedHours = hours % 12 || 12;
+                const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+                return `${formattedHours}:${formattedMinutes} ${ampm}`;
+            }
+            
+            // Update service status immediately and every minute
+            updateServiceStatus();
+            setInterval(updateServiceStatus, 60000);
+            
+            // Form validation
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simple validation
+                    const name = document.getElementById('name').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value.trim();
+                    const terms = document.getElementById('terms').checked;
+                    
+                    if (!name || !phone || !email || !subject || !message || !terms) {
+                        showAlert('Por favor, completa todos los campos del formulario y acepta los términos.', 'danger');
+                        return;
+                    }
+                    
+                    if (!validateEmail(email)) {
+                        showAlert('Por favor, ingresa un email válido.', 'danger');
+                        return;
+                    }
+                    
+                    // Show success message
+                    showAlert('¡Gracias por contactarnos! Hemos recibido tu mensaje y te responderemos lo antes posible.', 'success');
+                    contactForm.reset();
+                });
+            }
+            
+            function showAlert(message, type) {
+                // Create alert element
+                const alertDiv = document.createElement('div');
+                alertDiv.className = `alert alert-${type} alert-dismissible fade show mt-3`;
+                alertDiv.role = 'alert';
+                alertDiv.innerHTML = `
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                `;
+                
+                // Insert after form
+                const form = document.getElementById('contactForm');
+                form.parentNode.insertBefore(alertDiv, form.nextSibling);
+                
+                // Auto-dismiss after 5 seconds
+                setTimeout(() => {
+                    const bsAlert = new bootstrap.Alert(alertDiv);
+                    bsAlert.close();
+                }, 5000);
+            }
+            
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href !== '#inicio') {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                            window.scrollTo({
+                                top: targetElement.offsetTop - navbarHeight - 20,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Close mobile menu if open
+                            const navbarCollapse = document.querySelector('.navbar-collapse');
+                            if (navbarCollapse.classList.contains('show')) {
+                                const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                                bsCollapse.hide();
+                            }
+                        }
+                    }
+                });
+            });
+            
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            function checkScrollAnimation() {
+                animateElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkScrollAnimation();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScrollAnimation);
+            
+            // Add hover effect to service cards
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```
