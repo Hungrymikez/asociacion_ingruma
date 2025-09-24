@@ -5,9 +5,74 @@
             --dark-bg: #121212;
         }
 
+        /* Universal box-sizing to prevent layout shifts */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* Prevent horizontal scroll/side shift */
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
+            /* padding-top: 5em; */
             font-family: 'Poppins', sans-serif;
             transition: background-color 0.3s ease;
+        }
+
+        /* Make media and embeds fluid to avoid overflow */
+        img, iframe, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Ensure embedded map fits container */
+        #contacto iframe {
+            display: block;
+            width: 100% !important;
+        }
+
+        /* Fix navbar overlap on small screens */
+        @media (max-width: 991.98px) {
+            body {
+                padding-top: 120px; /* larger offset for fixed navbar on mobile */
+            }
+
+            .hero-section {
+                margin-top: 0; /* remove extra margin to avoid double spacing */
+                padding-top: 2rem; /* more spacing below navbar */
+                height: auto;
+                min-height: 100vh;
+            }
+        }
+
+        /* Extra small devices: slightly larger offset */
+        /*@media (max-width: 575.98px) {
+            body {
+                padding-top: 140px;
+            }
+        }*/
+
+        /* From 300px and up (tighter target for very small phones) */
+        @media (min-width: 290px) and (max-width: 575.98px) {
+            body {
+                padding-top: 190px; /* deeper offset starting from 300px */
+            }
+            .hero-section {
+                padding-top: 2.5rem;
+                /*height: 100vh;*/
+
+
+                /* a bit more spacing under the navbar */
+            }
+            /* Extra guard to avoid side shift on tiny screens */
+            .container, .row, .col-12,
+            [class^="col-"], [class*=" col-"] {
+                overflow-x: hidden;
+            }
         }
 
         .navbar {
@@ -24,6 +89,7 @@
 
         .hero-section {
             margin-top: 5em;
+            /* padding-top: 100px; */
 
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('../img/carros.png') center/cover no-repeat;
             /* background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('../img/carros.png') center/cover no-repeat;
@@ -229,3 +295,12 @@
             background-color: rgba(30, 30, 30, 0.8) !important;
             color: #f8f9fa !important;
         }
+
+
+
+    @media (min-width: 992px) {
+        .hero-section {
+            margin-top: 0;
+            padding-top: 100px; /* O lo que ya tenías */
+        }
+}

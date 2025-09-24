@@ -1,0 +1,836 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="COGRYKEZ LAB STUDIO - Desarrollo web profesional con enfoque en soluciones innovadoras">
+    <title>COGRYKEZ LAB STUDIO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #660000;
+            --secondary: #D4AF37;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #28a745;
+            --danger: #dc3545;
+        }
+
+        .dark-mode {
+            --dark: #f8f9fa;
+            --light: #1a1a1a;
+            --gray: #adb5bd;
+            background-color: #121212;
+            color: var(--light);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .dark-mode .navbar {
+            background-color: rgba(18, 18, 18, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--primary) !important;
+            font-size: 1.5rem;
+        }
+
+        .dark-mode .navbar-brand {
+            color: var(--secondary) !important;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--dark) !important;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode .nav-link {
+            color: var(--light) !important;
+        }
+
+        .nav-link.active, .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        .dark-mode .nav-link.active, .dark-mode .nav-link:hover {
+            color: var(--secondary) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #4d0000;
+            border-color: #4d0000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #b8860b;
+            border-color: #b8860b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            transition: all 0.3s ease;
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05) rotate(5deg);
+            border-color: var(--secondary);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .dark-mode .section-title::after {
+            background: var(--secondary);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--light);
+        }
+
+        .dark-mode .timeline-item::before {
+            border-color: var(--dark);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 2px solid transparent;
+        }
+
+        .dark-mode .service-card {
+            background: #2d2d2d;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: var(--primary);
+        }
+
+        .dark-mode .service-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .project-card {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(102, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dark-mode .project-overlay {
+            background: rgba(212, 175, 55, 0.8);
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .dark-mode .scroll-down {
+            color: var(--secondary);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .dark-mode .back-to-top {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(102, 0, 0, 0.3);
+        }
+
+        .dark-mode .back-to-top:hover {
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .social-icon {
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 0, 0, 0.3);
+        }
+
+        .dark-mode .social-icon:hover {
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(102, 0, 0, 0.25);
+        }
+
+        .dark-mode .form-control:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mode-toggle {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+
+        .dark-mode .mode-toggle {
+            color: var(--secondary);
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 100%;
+        }
+
+        .dark-mode .testimonial-card {
+            background: #2d2d2d;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .hero-image {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .floating-cta {
+                bottom: 90px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-image {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#hero">COGRYKEZ LAB STUDIO</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#hero">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">Sobre Mí</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#services">Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#portfolio">Portafolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contacto</a>
+                        </li>
+                    </ul>
+                    <button class="mode-toggle" id="modeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="#contact" class="btn btn-primary ms-3">Contactar</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-in">
+                    <h1 class="display-4 fw-bold mb-4">Transformamos Ideas en <span class="text-primary">Realidad Digital</span></h1>
+                    <p class="lead mb-4">Desarrollo web profesional con enfoque en soluciones innovadoras que impulsan tu negocio al siguiente nivel.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#portfolio" class="btn btn-primary btn-lg">Ver Proyectos</a>
+                        <a href="#contact" class="btn btn-outline-secondary btn-lg">Contactar Ahora</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center fade-in">
+                    <img src="https://placehold.co/500x500/660000/white?text=COGRYKEZ" alt="COGRYKEZ LAB STUDIO" class="hero-image img-fluid">
+                </div>
+            </div>
+            <div class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="section-title fade-in">Sobre Mí</h2>
+            <div class="row">
+                <div class="col-lg-6 fade-in">
+                    <p class="lead">Soy un apasionado desarrollador web con mentalidad de crecimiento constante. Desde mis primeros pasos como rookie hasta convertirme en un profesional experimentado, mi enfoque siempre ha sido resolver problemas reales con soluciones digitales efectivas.</p>
+                    <p>Mi filosofía se basa en la mejora continua, la atención al detalle y la entrega de valor real a mis clientes. Cada proyecto es una oportunidad para aprender, crecer y superar expectativas.</p>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5>2020 - Primeros Pasos</h5>
+                            <p>Comencé mi viaje en el desarrollo web con HTML, CSS y JavaScript básico.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>2021 - Especialización</h5>
+                            <p>Me especialicé en frameworks modernos y mejores prácticas de desarrollo.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>2022 - Proyectos Reales</h5>
+                            <p>Desarrollé mi primer portafolio profesional y comencé a trabajar con clientes reales.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>2023 - COGRYKEZ LAB STUDIO</h5>
+                            <p>Fundé mi propio estudio de desarrollo web enfocado en calidad y satisfacción del cliente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title fade-in">Servicios</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4 fade-in">
+                    <div class="service-card">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-laptop-code fa-3x text-primary"></i>
+                        </div>
+                        <h4 class="text-center mb-3">Desarrollo Frontend</h4>
+                        <p class="text-center">Interfaces modernas y responsivas con las últimas tecnologías del mercado.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 fade-in">
+                    <div class="service-card">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-server fa-3x text-primary"></i>
+                        </div>
+                        <h4 class="text-center mb-3">Desarrollo Backend</h4>
+                        <p class="text-center">APIs robustas y escalables con arquitectura moderna y segura.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 fade-in">
+                    <div class="service-card">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-mobile-alt fa-3x text-primary"></i>
+                        </div>
+                        <h4 class="text-center mb-3">Aplicaciones Web</h4>
+                        <p class="text-center">Aplicaciones completas desde el frontend hasta el backend, listas para producción.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonials -->
+            <div class="row mt-5">
+                <div class="col-12 fade-in">
+                    <h3 class="text-center mb-4">Testimonios</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="testimonial-card">
+                                <p>"El trabajo de COGRYKEZ LAB STUDIO superó todas mis expectativas. Profesionalismo, calidad y entrega puntual."</p>
+                                <h6 class="mt-3">- María Rodríguez, CEO TechStart</h6>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="testimonial-card">
+                                <p>"Transformaron mi idea en una aplicación funcional en tiempo récord. Altamente recomendado para cualquier proyecto web."</p>
+                                <h6 class="mt-3">- Juan Pérez, Fundador InnovateLab</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5">
+        <div class="container">
+            <h2 class="section-title fade-in">Portafolio</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4 fade-in">
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/660000/white?text=E-commerce" class="w-100 h-100 object-fit-cover" alt="E-commerce Project">
+                        <div class="project-overlay">
+                            <h4 class="text-white">E-commerce Platform</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 fade-in">
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/D4AF37/1a1a1a?text=Dashboard" class="w-100 h-100 object-fit-cover" alt="Dashboard Project">
+                        <div class="project-overlay">
+                            <h4 class="text-dark">Analytics Dashboard</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 fade-in">
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/660000/white?text=Portfolio" class="w-100 h-100 object-fit-cover" alt="Portfolio Project">
+                        <div class="project-overlay">
+                            <h4 class="text-white">Creative Portfolio</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 fade-in">
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/D4AF37/1a1a1a?text=Blog" class="w-100 h-100 object-fit-cover" alt="Blog Project">
+                        <div class="project-overlay">
+                            <h4 class="text-dark">Modern Blog</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 fade-in">
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/660000/white?text=App" class="w-100 h-100 object-fit-cover" alt="Mobile App Project">
+                        <div class="project-overlay">
+                            <h4 class="text-white">Mobile App</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 fade-in">
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/D4AF37/1a1a1a?text=Landing" class="w-100 h-100 object-fit-cover" alt="Landing Page Project">
+                        <div class="project-overlay">
+                            <h4 class="text-dark">Landing Page</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title fade-in">Contacto</h2>
+            <div class="row">
+                <div class="col-lg-6 fade-in">
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="name" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" id="phone" placeholder="Teléfono (opcional)">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="message" rows="5" placeholder="Mensaje" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
+                        <div id="formMessage" class="mt-3" style="display: none;"></div>
+                    </form>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <div class="text-center">
+                        <h4>Conéctate conmigo</h4>
+                        <p class="mb-4">Sígueme en redes sociales para ver mis últimos proyectos y actualizaciones.</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <div class="mt-4">
+                            <h5>Información de Contacto</h5>
+                            <p><i class="fas fa-envelope me-2"></i> contacto@cogrykez.com</p>
+                            <p><i class="fas fa-phone me-2"></i> +52 123 456 7890</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>COGRYKEZ LAB STUDIO</h5>
+                    <p>Desarrollo web profesional con enfoque en soluciones innovadoras.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#hero" class="text-decoration-none">Inicio</a></li>
+                        <li><a href="#about" class="text-decoration-none">Sobre Mí</a></li>
+                        <li><a href="#services" class="text-decoration-none">Servicios</a></li>
+                        <li><a href="#portfolio" class="text-decoration-none">Portafolio</a></li>
+                        <li><a href="#contact" class="text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Redes Sociales</h5>
+                    <div class="d-flex">
+                        <a href="#" class="social-icon me-2"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon me-2"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2024 COGRYKEZ LAB STUDIO. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Floating CTA Button -->
+    <a href="#contact" class="btn btn-primary floating-cta d-lg-none">
+        <i class="fas fa-comment"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Dark Mode Toggle
+        const modeToggle = document.getElementById('modeToggle');
+        const body = document.body;
+        const icon = modeToggle.querySelector('i');
+
+        // Check for saved preference or respect system preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedMode = localStorage.getItem('darkMode');
+
+        if (savedMode === 'true' || (savedMode === null && prefersDark)) {
+            body.classList.add('dark-mode');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+
+        modeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            
+            if (isDark) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active Navigation Link on Scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // Back to Top Functionality
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Fade-in Animation on Scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simple validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                formMessage.style.display = 'block';
+                formMessage.className = 'alert alert-success';
+                formMessage.innerHTML = '¡Mensaje enviado con éxito! Te contactaré pronto.';
+                contactForm.reset();
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            } else {
+                formMessage.style.display = 'block';
+                formMessage.className = 'alert alert-danger';
+                formMessage.innerHTML = 'Por favor completa todos los campos requeridos.';
+            }
+        });
+
+        // Project Card Click (for demo purposes)
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                alert('Detalles del proyecto (modal en desarrollo)');
+            });
+        });
+    </script>
+</body>
+</html>
