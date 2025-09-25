@@ -59,7 +59,7 @@
         /* From 300px and up (tighter target for very small phones) */
         @media (min-width: 290px) and (max-width: 575.98px) {
             body {
-                padding-top: 190px; /* deeper offset starting from 300px */
+                padding-top: 200px; /* deeper offset starting from 300px */
             }
             .hero-section {
                 padding-top: 2.5rem;
